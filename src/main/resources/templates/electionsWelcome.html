@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="row justify-content-center align-items-center vh-100">
+    <div class="row justify-content-center mt-5">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body text-center">
@@ -20,7 +20,16 @@
                     </div>
                 </div>
             </div>
+            <div class="mt-4">
+                <h2>Candidates List</h2>
+                <ul>
+                    <li th:each="candidate : ${candidatesList}">
+                        <a th:href="@{/elections/showCandidate/{email}(email=${candidate.email})}" th:text="${candidate.name}"></a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
 </body>
+</html>

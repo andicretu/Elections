@@ -1,6 +1,7 @@
 package projects.Elections;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,7 +23,9 @@ public class ElectionsController {
     }
 
     @GetMapping("/welcome")
-    public String showWelcomePage() {
+    public String showWelcomePage(Model model) {
+        List<ElectorModel> candidates = electionsRepository.findByCandidateStatusTrue();
+        model.addAttribute("candidatesList", candidates);
         return "electionsWelcome";
     }
     @GetMapping("/login")
@@ -34,13 +37,13 @@ public class ElectionsController {
         model.addAttribute("electorModel", new ElectorModel());
         return "electionsRegister";
     }
-    @GetMapping("elections/show")
+    @GetMapping("elections/showElector")
     public String showElectorProfile(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
         ElectorModel electorModel = electionsRepository.findByEmail(email);
         model.addAttribute("electorModel", electorModel);
-        return "electionsShow";
+        return "electionsShowElector";
     }
     @PostMapping("/register")
     public String createElector(@ModelAttribute("electorModel")ElectorModel electorModel, Model model) {
@@ -50,5 +53,15 @@ public class ElectionsController {
         System.out.println("Salvat cu succes");
         model.addAttribute("message", "Profile saved successfully!");
         return "redirect:/login";
+    }
+    @GetMapping("/elections/showCandidate/{email}")
+    public String showCandidateProfile(@PathVariable String email, Model model) {
+        ElectorModel candidate = electionsRepository.findByEmail(email);
+        if (candidate != null && candidate.getCandidateStatus()) {
+            model.addAttribute("candidate", candidate);
+            return "electionsShowCandidate";
+        } else {
+            return "redirect:/welcome";
+        }
     }
 }

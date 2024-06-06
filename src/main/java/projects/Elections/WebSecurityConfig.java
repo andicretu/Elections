@@ -25,12 +25,12 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/welcome", "/register").permitAll()
+                        .requestMatchers("/welcome", "/register", "/elections/showCandidate/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/elections/show", true)
+                        .defaultSuccessUrl("/elections/showElector", true)
                         .permitAll()
                 )
                 .logout((logout) -> logout.permitAll());
