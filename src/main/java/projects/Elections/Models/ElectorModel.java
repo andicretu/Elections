@@ -1,4 +1,4 @@
-package projects.Elections;
+package projects.Elections.Models;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
@@ -10,8 +10,12 @@ import java.util.Collections;
 
 @Entity
 @Table(name = "electors")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class ElectorModel implements UserDetails {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Long id;
     @Column(name = "EMAIL", unique = true)
     private String email;
     @Column(name = "PASSWORD", nullable = false)
@@ -24,13 +28,22 @@ public class ElectorModel implements UserDetails {
     private Boolean candidateStatus;
     public ElectorModel() {
     }
-    public ElectorModel(String email, String password, String name, String description, Boolean candidateStatus) {
+    public ElectorModel(Long id, String email, String password, String name, String description, Boolean candidateStatus) {
+        this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
         this.description = description;
         this.candidateStatus = candidateStatus;
     }
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {this.id = this.id;}
     public String getEmail() {
         return email;
     }

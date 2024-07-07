@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import projects.Elections.Models.ElectorModel;
 
 @Configuration
 @EnableWebSecurity
@@ -25,12 +26,12 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/welcome", "/register", "/elections/showCandidate/**").permitAll()
+                        .requestMatchers("/welcome", "/register", "/elections/show-candidate/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/elections/showElector", true)
+                        .defaultSuccessUrl("/elections/show-elector", true)
                         .permitAll()
                 )
                 .logout((logout) -> logout.permitAll());
