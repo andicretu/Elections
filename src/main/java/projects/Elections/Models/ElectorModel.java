@@ -26,8 +26,7 @@ public class ElectorModel implements UserDetails {
     private String description;
     @Column (name = "CANDIDATESTATUS", nullable = true)
     private Boolean candidateStatus;
-    public ElectorModel() {
-    }
+    public ElectorModel() {}
     public ElectorModel(Long id, String email, String password, String name, String description, Boolean candidateStatus) {
         this.id = id;
         this.email = email;
@@ -35,10 +34,6 @@ public class ElectorModel implements UserDetails {
         this.name = name;
         this.description = description;
         this.candidateStatus = candidateStatus;
-    }
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
     }
     public Long getId() {
         return id;

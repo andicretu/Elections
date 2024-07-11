@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import projects.Elections.Models.ElectorModel;
+import projects.Elections.Repositories.ElectionsRepository;
 
 @Configuration
 @EnableWebSecurity

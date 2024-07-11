@@ -2,7 +2,7 @@ package projects.Elections.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import projects.Elections.ElectionsRepository;
+import projects.Elections.Repositories.ElectionsRepository;
 import projects.Elections.Models.CandidateModel;
 import projects.Elections.Models.ElectorModel;
 

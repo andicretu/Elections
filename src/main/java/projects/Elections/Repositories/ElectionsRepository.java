@@ -1,4 +1,4 @@
-package projects.Elections;
+package projects.Elections.Repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import projects.Elections.Models.CandidateModel;
@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface ElectionsRepository extends CrudRepository<ElectorModel, String> {
     ElectorModel findByEmail(String email);
-    CandidateModel findCandidateByEmail(String email);
     List<ElectorModel> findByCandidateStatusTrue();
+    void deleteAll();
 }

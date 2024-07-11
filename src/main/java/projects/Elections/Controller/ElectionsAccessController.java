@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import projects.Elections.ElectionsRepository;
+import projects.Elections.Repositories.ElectionsRepository;
 import projects.Elections.Models.ElectorModel;
 
 import java.util.List;

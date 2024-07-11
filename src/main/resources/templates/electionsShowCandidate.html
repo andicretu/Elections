@@ -17,6 +17,10 @@
             <pre class="card-text" th:text="${candidate.name}"></pre>
             <p><strong>Description:</strong></p>
             <pre class="card-text" th:text="${candidate.description}"></pre>
+            <p><strong>Resume:</strong></p>
+            <pre class="card-text" th:text="${candidate.resume}"></pre>
+            <p><strong>Electoral Platform:</strong></p>
+            <pre class="card-text" th:text="${candidate.electoralPlatform}"></pre>
         </div>
     </div>
     <form th:action="@{/logout}" method="post" class="mt-4">
