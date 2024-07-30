@@ -17,8 +17,11 @@
             <pre class="card-text" th:text="${electorModel.name}"></pre>
             <p><strong>Description:</strong></p>
             <pre class="card-text" th:text="${electorModel.description}"></pre>
-            <p><strong>Profile type:</strong></p>
-            <pre class="card-text" th:text="${electorModel.candidateStatus}"></pre>
+            <div>
+                <label>
+                    <input type="checkbox" name="checkIfCandidate" th:checked="${transformToCandidate}" /> Check if you are a candidate
+                </label>
+            </div>
         </div>
     </div>
     <form th:action="@{/logout}" method="post" class="mt-4">

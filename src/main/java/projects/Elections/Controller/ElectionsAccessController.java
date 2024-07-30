@@ -6,23 +6,31 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import projects.Elections.Repositories.ElectionsRepository;
+import org.springframework.web.bind.annotation.RequestParam;
+import projects.Elections.Models.CandidateModel;
 import projects.Elections.Models.ElectorModel;
+import projects.Elections.Repositories.CandidateRepository;
+import projects.Elections.Repositories.ElectionsRepository;
+import projects.Elections.Service.ElectorService;
 
 import java.util.List;
 @org.springframework.stereotype.Controller
 public class ElectionsAccessController {
-    private final ElectionsRepository electionsRepository;
-    private  final PasswordEncoder passwordEncoder;
     @Autowired
-    public ElectionsAccessController(ElectionsRepository electionsRepository, PasswordEncoder passwordEncoder) {
-        this.electionsRepository = electionsRepository;
-        this.passwordEncoder = passwordEncoder;
+    private ElectionsRepository electionsRepository;
+    @Autowired
+    private CandidateRepository candidateRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    private ElectorService electorService;
+
+    @Autowired
+    public ElectionsAccessController() {
     }
 
     @GetMapping("/welcome")
     public String showWelcomePage(Model model) {
-        List<ElectorModel> candidates = electionsRepository.findByCandidateStatusTrue();
+        List<CandidateModel> candidates = candidateRepository.findAll();
         model.addAttribute("candidatesList", candidates);
         return "electionsWelcome";
     }
@@ -36,12 +44,18 @@ public class ElectionsAccessController {
         return "electionsRegister";
     }
     @PostMapping("/register")
-    public String createElector(@ModelAttribute("electorModel")ElectorModel electorModel, Model model) {
+    public String createElector(@ModelAttribute("electorModel")ElectorModel electorModel, @RequestParam boolean  checkIfCandidate, Model model) {
         String hashedPassword = passwordEncoder.encode(electorModel.getPassword());
         electorModel.setPassword(hashedPassword);
-        electionsRepository.save(electorModel);
-        System.out.println("Salvat cu succes");
-        model.addAttribute("message", "Profile saved successfully!");
-        return "redirect:/login";
+        if (checkIfCandidate) {
+            electorService.transformToCandidate(electorModel);
+            System.out.println("Candidat salvat cu succes");
+            model.addAttribute("message", "Candidate saved successfully!");
+        } else {
+            electionsRepository.save(electorModel);
+            System.out.println("Elector salvat cu succes");
+            model.addAttribute("message", "Elector profile saved successfully!");
+        }
+        return "electionsShowElector";
     }
 }

@@ -1,11 +1,14 @@
 package projects.Elections.Models;
 
 import jakarta.persistence.*;
-import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "candidates")
-public class CandidateModel extends ElectorModel implements UserDetails {
+public class CandidateModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Long id;
     @Column(name = "RESUME",nullable = false)
     private String resume;
     @Column(name = "ELECTORAL PLATFORM",nullable = false)

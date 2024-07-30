@@ -5,22 +5,29 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import projects.Elections.Models.CandidateModel;
 import projects.Elections.Models.ElectorModel;
+import projects.Elections.Repositories.CandidateRepository;
 import projects.Elections.Repositories.ElectionsRepository;
+
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
 
     private final ElectionsRepository electionsRepository;
+    private final CandidateRepository candidateRepository;
 
-    public WebSecurityConfig(ElectionsRepository electionsRepository) {
+    public WebSecurityConfig(ElectionsRepository electionsRepository, CandidateRepository candidateRepository) {
         this.electionsRepository = electionsRepository;
+        this.candidateRepository = candidateRepository;
     }
 
     @Bean
@@ -44,14 +51,17 @@ public class WebSecurityConfig {
     public UserDetailsService userDetailsService() {
         return email -> {
             ElectorModel electorModel = electionsRepository.findByEmail(email);
-            if (electorModel != null) {
-                return new org.springframework.security.core.userdetails.User(
-                        electorModel.getEmail(),
-                        electorModel.getPassword(),
-                        electorModel.getAuthorities()
-                );
+            if (electorModel == null) {
+                throw new UsernameNotFoundException("User not found with email: " + email);
             }
-            throw new UsernameNotFoundException("User not found with email: " + email);
+            CandidateModel candidateModel = candidateRepository.findCandidateByElectorId(electorModel.getId());
+            return new org.springframework.security.core.userdetails.User(
+                    electorModel.getEmail(),
+                    electorModel.getPassword(),
+                    List.of(candidateModel == null
+                            ? new SimpleGrantedAuthority("ELECTOR ROLE")
+                            : new SimpleGrantedAuthority("CANDIDATE ROLE"))
+            );
         };
     }
 

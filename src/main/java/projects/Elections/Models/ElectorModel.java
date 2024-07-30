@@ -1,17 +1,11 @@
 package projects.Elections.Models;
-import jakarta.persistence.*;
-import jakarta.persistence.Table;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.Collections;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "electors")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class ElectorModel implements UserDetails {
+public class ElectorModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
@@ -24,16 +18,13 @@ public class ElectorModel implements UserDetails {
     private String name;
     @Column (name = "DESCRIPTION", nullable = false)
     private String description;
-    @Column (name = "CANDIDATESTATUS", nullable = true)
-    private Boolean candidateStatus;
     public ElectorModel() {}
-    public ElectorModel(Long id, String email, String password, String name, String description, Boolean candidateStatus) {
+    public ElectorModel(Long id, String email, String password, String name, String description) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
         this.description = description;
-        this.candidateStatus = candidateStatus;
     }
     public Long getId() {
         return id;
@@ -63,38 +54,8 @@ public class ElectorModel implements UserDetails {
     public void setDescription(String description) {
         this.description = description;
     }
-    public Boolean getCandidateStatus() {
-        return candidateStatus;
-    }
-    public void setCandidateStatus(Boolean candidateStatus) {
-        this.candidateStatus = candidateStatus;
-    }
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority(candidateStatus ? "ROLE_CANDIDATE" : "ROLE_ELECTOR"));
-    }
-    @Override
+
     public String getUsername() {
         return email;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
     }
 }

@@ -7,16 +7,20 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import projects.Elections.Models.CandidateModel;
+import projects.Elections.Repositories.CandidateRepository;
 import projects.Elections.Repositories.ElectionsRepository;
 import projects.Elections.Models.ElectorModel;
 
 @org.springframework.stereotype.Controller
 public class ElectionsProfilesController {
     private final ElectionsRepository electionsRepository;
+    private final CandidateRepository candidateRepository;
     private  final PasswordEncoder passwordEncoder;
     @Autowired
-    public ElectionsProfilesController(ElectionsRepository electionsRepository, PasswordEncoder passwordEncoder) {
+    public ElectionsProfilesController(ElectionsRepository electionsRepository, CandidateRepository candidateRepository, PasswordEncoder passwordEncoder) {
         this.electionsRepository = electionsRepository;
+        this.candidateRepository = candidateRepository;
         this.passwordEncoder = passwordEncoder;
     }
     @GetMapping("elections/show-elector")
@@ -29,8 +33,9 @@ public class ElectionsProfilesController {
     }
     @GetMapping("/elections/show-candidate/{email}")
     public String showCandidateProfile(@PathVariable String email, Model model) {
-        ElectorModel candidate = electionsRepository.findByEmail(email);
-        if (candidate != null && candidate.getCandidateStatus()) {
+        ElectorModel elector = electionsRepository.findByEmail(email);
+        CandidateModel candidate = candidateRepository.findCandidateByElectorId(elector.getId());
+        if (candidate != null) {
             model.addAttribute("candidate", candidate);
             return "electionsShowCandidate";
         } else {
