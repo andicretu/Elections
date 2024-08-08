@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <h1>Elections</h1>
-    <form th:action="@{/register}" th:object="${electorModel}" method="post" class="mb-3">
+    <form th:action="@{/registerElector}" th:object="${electorModel}" method="post" class="mb-3">
         <div class="mb-3">
             <label for="email" class="form-label">insert email:</label>
             <textarea class="form-control" id="email" th:field="*{email}" rows="1"></textarea>
@@ -25,11 +25,6 @@
         <div class="mb-3">
             <label for="description" class="form-label">insert description:</label>
             <textarea class="form-control" id="description" th:field="*{description}" rows="1"></textarea>
-        </div>
-        <div>
-        <label>
-            <input type="checkbox" name="checkIfCandidate" th:checked="${transformToCandidate}" /> Check if you are a candidate
-        </label>
         </div>
         <div>
         <button type="submit" class="btn btn-primary">Submit</button>
