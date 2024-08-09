@@ -8,23 +8,23 @@
 </head>
 <body>
 <div class="container">
-    <h1>Elections</h1>
-    <form th:action="@{/registerElector}" th:object="${electorModel}" method="post" class="mb-3">
+    <h1>Register Candidate</h1>
+    <form th:action="@{/registerCandidate}" th:object="${candidateModel}" method="post" class="mb-3">
         <div class="mb-3">
             <label for="email" class="form-label">insert email:</label>
-            <textarea class="form-control" id="email" th:field="*{email}" rows="1"></textarea>
+            <textarea class="form-control" id="email" th:field="*{elector.email}" rows="1"></textarea>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">insert password:</label>
-            <textarea class="form-control" id="password" th:field="*{password}" rows="1"></textarea>
+            <textarea class="form-control" id="password" th:field="*{elector.password}" rows="1"></textarea>
         </div>
         <div class="mb-3">
             <label for="name" class="form-label">insert name:</label>
-            <textarea class="form-control" id="name" th:field="*{name}" rows="1"></textarea>
+            <textarea class="form-control" id="name" th:field="*{elector.name}" rows="1"></textarea>
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">insert description:</label>
-            <textarea class="form-control" id="description" th:field="*{description}" rows="1"></textarea>
+            <textarea class="form-control" id="description" th:field="*{elector.description}" rows="1"></textarea>
         </div>
         <div class="mb-3">
             <label for="resume" class="form-label">write your resume:</label>

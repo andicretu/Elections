@@ -1,5 +1,6 @@
 package projects.Elections;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -20,6 +21,8 @@ import java.util.Collections;
 public class WebSecurityConfig {
 
     private final ElectionsRepository electionsRepository;
+    @Autowired
+    private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
     public WebSecurityConfig(ElectionsRepository electionsRepository) {
         this.electionsRepository = electionsRepository;
@@ -34,14 +37,13 @@ public class WebSecurityConfig {
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/elections/show-elector", true)
+                        .successHandler(customAuthenticationSuccessHandler)
                         .permitAll()
                 )
                 .logout((logout) -> logout.permitAll());
 
         return http.build();
     }
-
     @Bean
     public UserDetailsService userDetailsService() {
         return email -> {
@@ -52,7 +54,7 @@ public class WebSecurityConfig {
             return new org.springframework.security.core.userdetails.User(
                     electorModel.getEmail(),
                     electorModel.getPassword(),
-                    Collections.emptyList() // No roles
+                    Collections.emptyList()
             );
         };
     }

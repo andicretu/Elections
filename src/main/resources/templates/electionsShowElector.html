@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="mt-4">Profile details</h1>
+    <h1 class="mt-4">Elector details</h1>
     <div class="card mt-4">
         <div class="card-body">
             <p><strong>Email:</strong></p>
@@ -17,11 +17,6 @@
             <pre class="card-text" th:text="${electorModel.name}"></pre>
             <p><strong>Description:</strong></p>
             <pre class="card-text" th:text="${electorModel.description}"></pre>
-            <div>
-                <label>
-                    <input type="checkbox" name="checkIfCandidate" th:checked="${transformToCandidate}" /> Check if you are a candidate
-                </label>
-            </div>
         </div>
     </div>
     <form th:action="@{/logout}" method="post" class="mt-4">

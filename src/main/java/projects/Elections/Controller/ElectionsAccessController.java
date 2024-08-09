@@ -10,7 +10,6 @@ import projects.Elections.Models.CandidateModel;
 import projects.Elections.Models.ElectorModel;
 import projects.Elections.Repositories.CandidateRepository;
 import projects.Elections.Repositories.ElectionsRepository;
-import projects.Elections.Service.ElectorService;
 
 import java.util.List;
 @org.springframework.stereotype.Controller
@@ -21,8 +20,6 @@ public class ElectionsAccessController {
     private CandidateRepository candidateRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
-    @Autowired
-    private ElectorService electorService;
 
     private ElectorModel electorModel;
 
@@ -60,13 +57,25 @@ public class ElectionsAccessController {
         return "electionsShowElector";
     }
     @PostMapping("/registerCandidate")
-    public String createCandidate(@ModelAttribute("candidateModel")CandidateModel candidateModel, Model model) {
-        String hashedPassword = passwordEncoder.encode(candidateModel.getElector().getPassword());
-        electorModel.setPassword(hashedPassword);
-        electionsRepository.save(electorModel);
+    public String createCandidate(@ModelAttribute("candidateModel") CandidateModel candidateModel, Model model) {
+        if (candidateModel.getResume() == null || candidateModel.getResume().isEmpty()) {
+            model.addAttribute("message", "Resume cannot be empty!");
+            return "electionsRegisterCandidate";
+        }
+        if (candidateModel.getElectoralPlatform() == null || candidateModel.getElectoralPlatform().isEmpty()) {
+            model.addAttribute("message", "Electoral platform cannot be empty!");
+            return "electionsRegisterCandidate";
+        }
+        ElectorModel electorModel = candidateModel.getElector();
+        if (electorModel != null) {
+            String hashedPassword = passwordEncoder.encode(electorModel.getPassword());
+            electorModel.setPassword(hashedPassword);
+            electionsRepository.save(electorModel);
+        }
         candidateRepository.save(candidateModel);
         System.out.println("Candidat salvat cu succes");
         model.addAttribute("message", "Candidate profile saved successfully!");
-        return "electionsShowCandiate";
+        return "electionsShowCandidate";
     }
+
 }

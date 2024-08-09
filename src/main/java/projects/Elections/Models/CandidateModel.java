@@ -11,7 +11,7 @@ public class CandidateModel {
     private Long id;
     @Column(name = "RESUME",nullable = false)
     private String resume;
-    @Column(name = "ELECTORAL PLATFORM",nullable = false)
+    @Column(name = "ELECTORAL PLATFORM",nullable = true)
     private String electoralPlatform;
     @OneToOne
     @JoinColumn(name = "ELECTOR_ID", referencedColumnName = "ID")
@@ -21,7 +21,7 @@ public class CandidateModel {
     public CandidateModel(String resume, String electoralPlatform, ElectorModel elector) {
         this.resume = resume;
         this.electoralPlatform = electoralPlatform;
-        this.elector = elector;
+        this.elector = elector != null ? elector : new ElectorModel();
     }
     public String getResume() { return resume; }
     public void setResume() {
