@@ -24,6 +24,8 @@ public class ElectionsAccessController {
     @Autowired
     private ElectorService electorService;
 
+    private ElectorModel electorModel;
+
     @Autowired
     public ElectionsAccessController() {
     }
@@ -39,9 +41,14 @@ public class ElectionsAccessController {
         return "electionsLogin";
     }
     @GetMapping("/registerElector")
-    public String showRegistrationForm(Model model) {
+    public String showElectorRegistrationForm(Model model) {
         model.addAttribute("electorModel", new ElectorModel());
         return "electionsRegisterElector";
+    }
+    @GetMapping("/registerCandidate")
+    public String showCandidateRegistrationForm(Model model) {
+        model.addAttribute("candidateModel", new CandidateModel());
+        return "electionsRegisterCandidate";
     }
     @PostMapping("/registerElector")
     public String createElector(@ModelAttribute("electorModel")ElectorModel electorModel, Model model) {
@@ -51,5 +58,15 @@ public class ElectionsAccessController {
         System.out.println("Elector salvat cu succes");
         model.addAttribute("message", "Elector profile saved successfully!");
         return "electionsShowElector";
+    }
+    @PostMapping("/registerCandidate")
+    public String createCandidate(@ModelAttribute("candidateModel")CandidateModel candidateModel, Model model) {
+        String hashedPassword = passwordEncoder.encode(candidateModel.getElector().getPassword());
+        electorModel.setPassword(hashedPassword);
+        electionsRepository.save(electorModel);
+        candidateRepository.save(candidateModel);
+        System.out.println("Candidat salvat cu succes");
+        model.addAttribute("message", "Candidate profile saved successfully!");
+        return "electionsShowCandiate";
     }
 }

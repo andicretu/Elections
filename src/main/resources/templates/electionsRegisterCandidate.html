@@ -26,6 +26,14 @@
             <label for="description" class="form-label">insert description:</label>
             <textarea class="form-control" id="description" th:field="*{description}" rows="1"></textarea>
         </div>
+        <div class="mb-3">
+            <label for="resume" class="form-label">write your resume:</label>
+            <textarea class="form-control" id="resume" th:field="*{resume}" rows="1"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="electoralPlatform" class="form-label">describe your electoral platform:</label>
+            <textarea class="form-control" id="electoralPlatform" th:field="*{electoralPlatform}" rows="1"></textarea>
+        </div>
         <div>
             <button type="submit" class="btn btn-primary">Submit</button>
             <p th:if="${message}" th:text="${message}" class="text-success"></p>
