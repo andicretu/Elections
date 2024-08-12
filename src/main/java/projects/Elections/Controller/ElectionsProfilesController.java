@@ -31,10 +31,12 @@ public class ElectionsProfilesController {
     }
     @GetMapping("/elections/show-candidate/{email}")
     public String showCandidateProfile(@PathVariable String email, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         ElectorModel elector = electionsRepository.findByEmail(email);
-        CandidateModel candidate = candidateRepository.findCandidateByElectorId(elector.getId());
+        CandidateModel candidate = candidateRepository.findByElector_Email(email);
         if (candidate != null) {
-            model.addAttribute("candidate", candidate);
+            model.addAttribute("candidateModel", candidate);
+            model.addAttribute("electorModel", candidate.getElector());
             return "electionsShowCandidate";
         } else {
             return "redirect:/welcome";

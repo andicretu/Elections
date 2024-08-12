@@ -54,7 +54,6 @@ public class ElectorModel {
     public void setDescription(String description) {
         this.description = description;
     }
-
     public String getUsername() {
         return email;
     }

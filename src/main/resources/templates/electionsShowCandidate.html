@@ -12,15 +12,15 @@
     <div class="card mt-4">
         <div class="card-body">
             <p><strong>Email:</strong></p>
-            <pre class="card-text" th:text="${candidate.email}"></pre>
+            <pre class="card-text" th:text="${electorModel.email}"></pre>
             <p><strong>Name:</strong></p>
-            <pre class="card-text" th:text="${candidate.name}"></pre>
+            <pre class="card-text" th:text="${electorModel.name}"></pre>
             <p><strong>Description:</strong></p>
-            <pre class="card-text" th:text="${candidate.description}"></pre>
+            <pre class="card-text" th:text="${electorModel.description}"></pre>
             <p><strong>Resume:</strong></p>
-            <pre class="card-text" th:text="${candidate.resume}"></pre>
+            <pre class="card-text" th:text="${candidateModel.resume}"></pre>
             <p><strong>Electoral Platform:</strong></p>
-            <pre class="card-text" th:text="${candidate.electoralPlatform}"></pre>
+            <pre class="card-text" th:text="${candidateModel.electoralPlatform}"></pre>
         </div>
     </div>
     <form th:action="@{/logout}" method="post" class="mt-4">

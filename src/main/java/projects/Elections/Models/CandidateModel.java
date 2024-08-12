@@ -11,7 +11,7 @@ public class CandidateModel {
     private Long id;
     @Column(name = "RESUME",nullable = false)
     private String resume;
-    @Column(name = "ELECTORAL PLATFORM",nullable = true)
+    @Column(name = "ELECTORAL_PLATFORM",nullable = false)
     private String electoralPlatform;
     @OneToOne
     @JoinColumn(name = "ELECTOR_ID", referencedColumnName = "ID")
@@ -23,14 +23,20 @@ public class CandidateModel {
         this.electoralPlatform = electoralPlatform;
         this.elector = elector != null ? elector : new ElectorModel();
     }
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
     public String getResume() { return resume; }
-    public void setResume() {
+    public void setResume(String resume) {
         this.resume = resume;
     }
     public String getElectoralPlatform() {
         return electoralPlatform;
     }
-    public void setElectoralPlatform() {
+    public void setElectoralPlatform(String electoralPlatform) {
         this.electoralPlatform = electoralPlatform;
     }
     public ElectorModel getElector() { return elector; }

@@ -52,12 +52,14 @@ public class ElectionsAccessController {
         String hashedPassword = passwordEncoder.encode(electorModel.getPassword());
         electorModel.setPassword(hashedPassword);
         electionsRepository.save(electorModel);
+        System.out.println("Id: " + electorModel.getId());
         System.out.println("Elector salvat cu succes");
         model.addAttribute("message", "Elector profile saved successfully!");
         return "electionsShowElector";
     }
     @PostMapping("/registerCandidate")
     public String createCandidate(@ModelAttribute("candidateModel") CandidateModel candidateModel, Model model) {
+        ElectorModel electorModel = candidateModel.getElector();
         if (candidateModel.getResume() == null || candidateModel.getResume().isEmpty()) {
             model.addAttribute("message", "Resume cannot be empty!");
             return "electionsRegisterCandidate";
@@ -66,16 +68,20 @@ public class ElectionsAccessController {
             model.addAttribute("message", "Electoral platform cannot be empty!");
             return "electionsRegisterCandidate";
         }
-        ElectorModel electorModel = candidateModel.getElector();
         if (electorModel != null) {
             String hashedPassword = passwordEncoder.encode(electorModel.getPassword());
             electorModel.setPassword(hashedPassword);
             electionsRepository.save(electorModel);
         }
+        System.out.println("Id: " + candidateModel.getId());
+        System.out.println("ElectorId: "+ electorModel.getId());
+        System.out.println("Resume: " + candidateModel.getResume());
+        System.out.println("Electoral Platform: " + candidateModel.getElectoralPlatform());
+        System.out.println("Elector Email: " + candidateModel.getElector().getEmail());
+        System.out.println("Elector/candidat salvat cu succes");
         candidateRepository.save(candidateModel);
         System.out.println("Candidat salvat cu succes");
         model.addAttribute("message", "Candidate profile saved successfully!");
         return "electionsShowCandidate";
     }
-
 }
