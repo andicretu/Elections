@@ -10,7 +10,7 @@ public class ElectorModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
-    @Column(name = "EMAIL", unique = true)
+    @Column(name = "EMAIL", unique = true, nullable = false)
     private String email;
     @Column(name = "PASSWORD", nullable = false)
     private String password;

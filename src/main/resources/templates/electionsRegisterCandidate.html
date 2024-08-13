@@ -23,6 +23,15 @@
             <textarea class="form-control" id="name" th:field="*{elector.name}" rows="1"></textarea>
         </div>
         <div class="mb-3">
+            <label for="partyAffiliation" class="form-label">Select Party Affiliation:</label>
+            <select class="form-control" id="partyAffiliation" th:field="*{partyAffiliation}">
+                <option value="Democratic">Democratic</option>
+                <option value="Republican">Republican</option>
+                <option value="Independent">Independent</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+        <div class="mb-3">
             <label for="description" class="form-label">insert description:</label>
             <textarea class="form-control" id="description" th:field="*{elector.description}" rows="1"></textarea>
         </div>

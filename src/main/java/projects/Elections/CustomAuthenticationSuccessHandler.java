@@ -1,6 +1,5 @@
 package projects.Elections;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.core.Authentication;
@@ -21,14 +20,14 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         this.candidateRepository = candidateRepository;
     }
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
         String userEmail = authentication.getName();
         ElectorModel elector = electionsRepository.findByEmail(userEmail);
         CandidateModel candidate = candidateRepository.findByElector_Email(userEmail);
         if (candidate!= null) {
-            response.sendRedirect("/elections/show-candidate?email=" + userEmail);
+            response.sendRedirect("/elections/show-candidate/" + userEmail);
         } else if (elector != null) {
-            response.sendRedirect("/elections/show-elector?email=" + userEmail);
+            response.sendRedirect("/elections/show-elector/" + userEmail);
         } else {
             response.sendRedirect("/login?error");
         }

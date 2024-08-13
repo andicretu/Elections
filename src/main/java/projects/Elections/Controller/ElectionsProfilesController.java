@@ -11,6 +11,8 @@ import projects.Elections.Models.ElectorModel;
 import projects.Elections.Repositories.CandidateRepository;
 import projects.Elections.Repositories.ElectionsRepository;
 
+import java.util.List;
+
 @org.springframework.stereotype.Controller
 public class ElectionsProfilesController {
     private final ElectionsRepository electionsRepository;
@@ -21,12 +23,13 @@ public class ElectionsProfilesController {
         this.electionsRepository = electionsRepository;
         this.candidateRepository = candidateRepository;
     }
-    @GetMapping("elections/show-elector")
-    public String showElectorProfile(Model model) {
+    @GetMapping("elections/show-elector/{email}")
+    public String showElectorProfile(@PathVariable String email, Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
         ElectorModel electorModel = electionsRepository.findByEmail(email);
+        List<CandidateModel> candidatesList = candidateRepository.findAll();
         model.addAttribute("electorModel", electorModel);
+        model.addAttribute("candidatesList", candidatesList);
         return "electionsShowElector";
     }
     @GetMapping("/elections/show-candidate/{email}")
