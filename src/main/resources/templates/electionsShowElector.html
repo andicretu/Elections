@@ -19,6 +19,12 @@
             <pre class="card-text" th:text="${electorModel.description}"></pre>
         </div>
     </div>
+    <form th:action="@{/logout}" method="post" class="mt-4">
+        <button type="submit" class="btn btn-primary">Logout</button>
+    </form>
+    <div class="mt-4">
+        <a th:href="@{/elections/edit-elector/{email}(email=${electorModel.email})}" class="btn btn-warning">Edit Elector</a>
+    </div>
     <div class="mt-4">
         <h2>Candidates List</h2>
         <ul>
@@ -30,9 +36,6 @@
             </li>
         </ul>
     </div>
-    <form th:action="@{/logout}" method="post" class="mt-4">
-        <button type="submit" class="btn btn-primary">Logout</button>
-    </form>
 </div>
 </body>
 </html>
