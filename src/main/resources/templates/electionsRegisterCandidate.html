@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <h1>Register Candidate</h1>
-    <form th:action="@{/registerCandidate}" th:object="${candidateModel}" method="post" class="mb-3">
+    <form th:action="@{/register-candidate}" th:object="${candidateModel}" method="post" class="mb-3">
         <div class="mb-3">
             <label for="email" class="form-label">insert email:</label>
             <textarea class="form-control" id="email" th:field="*{elector.email}" rows="1"></textarea>

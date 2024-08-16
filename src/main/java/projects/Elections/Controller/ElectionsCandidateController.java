@@ -24,7 +24,7 @@ public class ElectionsCandidateController {
     @Autowired
     public ElectionsCandidateController() {
     }
-    @GetMapping("/registerCandidate")
+    @GetMapping("/register-candidate")
     public String showCandidateRegistrationForm(Model model) {
         model.addAttribute("candidateModel", new CandidateModel());
         return "electionsRegisterCandidate";
@@ -42,7 +42,7 @@ public class ElectionsCandidateController {
             return "redirect:/welcome";
         }
     }
-    @PostMapping("/registerCandidate")
+    @PostMapping("/register-candidate")
     public String createCandidate(@ModelAttribute("candidateModel") CandidateModel candidateModel, Model model) {
         ElectorModel electorModel = candidateModel.getElector();
         if (candidateModel.getResume() == null || candidateModel.getResume().isEmpty()) {
@@ -73,20 +73,18 @@ public class ElectionsCandidateController {
     public String showCandidateEditForm(@PathVariable String email, Model model) {
         CandidateModel candidateModel = candidateRepository.findByElector_Email(email);
         model.addAttribute("candidateModel", candidateModel);
-        return "electionsEditElector";
+        return "electionsEditCandidate";
     }
     @PostMapping("/elections/update-candidate")
     public String updateCandidate(@ModelAttribute("candidateModel") CandidateModel candidateModel, Model model) {
         CandidateModel existingCandidate = candidateRepository.findByElector_Email(candidateModel.getElector().getEmail());
-        ElectorModel existingElector = candidateModel.getElector();
+        ElectorModel existingElector = electionsRepository.findByEmail(candidateModel.getElector().getEmail());
         existingCandidate.getElector().setName(candidateModel.getElector().getName());
-        //existingElector.setName(electorModel.getName());
-        existingCandidate.setPartyAffiliation(candidateModel.getPartyAffiliation());
         existingCandidate.getElector().setDescription(candidateModel.getElector().getDescription());
-        //existingElector.setDescription(electorModel.getDescription());
+        electionsRepository.save(existingElector);
+        existingCandidate.setPartyAffiliation(candidateModel.getPartyAffiliation());
         existingCandidate.setResume(candidateModel.getResume());
         existingCandidate.setElectoralPlatform(candidateModel.getElectoralPlatform());
-        electionsRepository.save(existingElector);
         candidateRepository.save(existingCandidate);
         return "redirect:/elections/show-candidate/" + existingCandidate.getElector().getEmail();
     }
