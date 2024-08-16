@@ -28,10 +28,10 @@
     <form th:action="@{/logout}" method="post" class="mt-4">
         <button type="submit" class="btn btn-primary">Logout</button>
     </form>
-    <div class="mt-4">
+    <div class="mt-4" th:if="${isOwner}">
         <a th:href="@{/elections/edit-candidate/{email}(email=${candidateModel.elector.email})}" class="btn btn-warning">Edit Candidate</a>
     </div>
-    <div class="mt-4">
+    <div class="mt-4" th:if="${!isOwner}">
         <h2>Candidates List</h2>
         <ul>
             <li th:each="candidate : ${candidatesList}">

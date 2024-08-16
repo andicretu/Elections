@@ -36,6 +36,11 @@
             </li>
         </ul>
     </div>
+    <form th:action="@/elections/vote" method="post">
+        <input type="hidden" name="candidateId" th:value="${candidate.id}" />
+        <input type="hidden" name="voterId" th:value="${elector.id}" />
+        <button type="submit" class="btn-btn-primary">Vote</button>
+    </form>
 </div>
 </body>
 </html>
