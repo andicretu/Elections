@@ -6,6 +6,6 @@ import projects.Elections.Models.VoteModel;
 import java.util.List;
 
 public interface VoteRepository extends CrudRepository<VoteModel, Long> {
-    List<VoteModel> findCandidateByElectorEmail(String email);
-    VoteModel findByVoterEmail(String email);
+    List<VoteModel> findCandidateByVoterEmail(String email);
+    List<VoteModel> findByVoterEmail(String email);
 }

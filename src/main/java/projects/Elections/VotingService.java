@@ -22,6 +22,6 @@ public class VotingService {
         voteRepository.save(vote);
     }
     public int getTotalVotesForCandidate(CandidateModel candidate, String email) {
-        return voteRepository.findCandidateByElectorEmail(email).size();
+        return voteRepository.findCandidateByVoterEmail(email).size();
     }
 }

@@ -19,6 +19,15 @@
             <pre class="card-text" th:text="${electorModel.description}"></pre>
         </div>
     </div>
+    <div class="mt-4">
+        <h2>Voting History</h2>
+        <ul class="list-group">
+            <li th:each="vote : ${votes}" class="list-group-item">
+                <p><strong>Voted for:</strong> <span th:text="${vote.candidate.elector.name}"></span></p>
+                <!-- <p><strong>On:</strong> <span th:text="${#dates.format(vote.timestamp, 'yyyy-MM-dd HH:mm')}"></span></p> -->
+            </li>
+        </ul>
+    </div>
     <form th:action="@{/logout}" method="post" class="mt-4">
         <button type="submit" class="btn btn-primary">Logout</button>
     </form>
@@ -27,20 +36,24 @@
     </div>
     <div class="mt-4">
         <h2>Candidates List</h2>
-        <ul>
-            <li th:each="candidate : ${candidatesList}">
-                <a th:href="@{/elections/show-candidate/{email}(email=${candidate.elector.email})}">
-                    <span th:text="${candidate.elector.name}"></span> -
-                    <span th:text="${candidate.partyAffiliation}"></span>
-                </a>
+        <ul class="list-group">
+            <li th:each="candidate : ${candidatesList}" class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <a th:href="@{/elections/show-candidate/{email}(email=${candidate.elector.email})}">
+                        <span th:text="${candidate.elector.name}"></span> -
+                        <span th:text="${candidate.partyAffiliation}"></span>
+                    </a>
+                </div>
+                <div>
+                    <form th:action="@{/elections/vote}" method="post" class="d-inline-block">
+                        <input type="hidden" name="candidateId" th:value="${candidate.id}" />
+                        <input type="hidden" name="voterId" th:value="${electorModel.id}" />
+                        <button type="submit" class="btn-btn-primary">Vote</button>
+                    </form>
+                </div>
             </li>
         </ul>
     </div>
-    <form th:action="@/elections/vote" method="post">
-        <input type="hidden" name="candidateId" th:value="${candidate.id}" />
-        <input type="hidden" name="voterId" th:value="${elector.id}" />
-        <button type="submit" class="btn-btn-primary">Vote</button>
-    </form>
 </div>
 </body>
 </html>

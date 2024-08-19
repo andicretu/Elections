@@ -16,6 +16,8 @@ public class ElectionsVotingController {
     private VotingService votingService;
     private final CandidateRepository candidateRepository;
     private final ElectionsRepository electionsRepository;
+    private ElectorModel electorModel;
+
     @Autowired
     public ElectionsVotingController(ElectionsRepository electionsRepository, CandidateRepository candidateRepository) {
         this.electionsRepository = electionsRepository;
@@ -26,6 +28,6 @@ public class ElectionsVotingController {
         CandidateModel candidate = candidateRepository.findById(candidateId).orElseThrow();
         ElectorModel voter = electionsRepository.findById(voterId).orElseThrow();
         votingService.castVote(candidate, voter);
-        return "redirect:/elections/results";
+        return "redirect:/elections/show-elector/" + electorModel.getEmail();
     }
 }

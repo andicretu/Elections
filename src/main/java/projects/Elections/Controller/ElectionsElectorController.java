@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import projects.Elections.Models.CandidateModel;
 import projects.Elections.Models.ElectorModel;
+import projects.Elections.Models.VoteModel;
 import projects.Elections.Repositories.CandidateRepository;
 import projects.Elections.Repositories.ElectionsRepository;
+import projects.Elections.Repositories.VoteRepository;
 
 import java.util.List;
 
@@ -21,12 +23,15 @@ public class ElectionsElectorController {
     @Autowired
     private final CandidateRepository candidateRepository;
     @Autowired
+    private final VoteRepository voteRepository;
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public ElectionsElectorController(ElectionsRepository electionsRepository, CandidateRepository candidateRepository) {
+    public ElectionsElectorController(ElectionsRepository electionsRepository, CandidateRepository candidateRepository, VoteRepository voteRepository) {
         this.electionsRepository = electionsRepository;
         this.candidateRepository = candidateRepository;
+        this.voteRepository = voteRepository;
     }
     @GetMapping("/registerElector")
     public String showElectorRegistrationForm(Model model) {
@@ -37,8 +42,10 @@ public class ElectionsElectorController {
     public String showElectorProfile(@PathVariable String email, Model model) {
         ElectorModel electorModel = electionsRepository.findByEmail(email);
         List<CandidateModel> candidatesList = candidateRepository.findAll();
+        List<VoteModel> votes = voteRepository.findByVoterEmail(email);
         model.addAttribute("electorModel", electorModel);
         model.addAttribute("candidatesList", candidatesList);
+        model.addAttribute("votes", votes);
         return "electionsShowElector";
     }
     @PostMapping("/registerElector")
