@@ -13,10 +13,14 @@ import java.time.LocalDateTime;
 public class VotingService {
     @Autowired
     private VoteRepository voteRepository;
-    public void castVote(CandidateModel candidate, ElectorModel voter) {
+    public void castVote(CandidateModel candidate, ElectorModel electorModel) {
+        boolean hasVoted = voteRepository.existsByElectorModel(electorModel);
+        if (hasVoted) {
+            throw new IllegalStateException("This elector has already voted.");
+        }
         VoteModel vote = new VoteModel();
         vote.setCandidate(candidate);
-        vote.setElectorModel(voter);
+        vote.setElectorModel(electorModel);
         vote.setVotes(1);
         vote.setTimestamp(LocalDateTime.now());
         voteRepository.save(vote);

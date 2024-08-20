@@ -2,6 +2,7 @@ package projects.Elections.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import projects.Elections.Models.CandidateModel;
@@ -23,10 +24,15 @@ public class ElectionsVotingController {
         this.candidateRepository = candidateRepository;
     }
     @PostMapping("/elections/vote")
-    public String castVote(@RequestParam Long candidateId, @RequestParam Long electorId) {
-        CandidateModel candidate = candidateRepository.findById(candidateId).orElseThrow();
+    public String castVote(@RequestParam Long candidateId, @RequestParam Long electorId, Model model) {
         ElectorModel electorModel = electionsRepository.findById(electorId).orElseThrow();
-        votingService.castVote(candidate, electorModel);
+        try {
+            CandidateModel candidate = candidateRepository.findById(candidateId).orElseThrow();
+            votingService.castVote(candidate, electorModel);
+        } catch (IllegalStateException e) {
+            model.addAttribute("errorMessage", "You have already voted.");
+            return "redirect:/elections/show-elector/" + electorModel.getEmail();
+        }
         return "redirect:/elections/show-elector/" + electorModel.getEmail();
     }
 }

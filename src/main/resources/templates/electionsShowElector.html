@@ -47,11 +47,17 @@
                     </a>
                 </div>
                 <div>
-                    <form th:action="@{/elections/vote}" method="post" class="d-inline-block">
-                        <input type="hidden" name="candidateId" th:value="${candidate.id}" />
-                        <input type="hidden" name="electorId" th:value="${electorModel.id}" />
-                        <button type="submit" class="btn btn-primary">Vote</button>
-                    </form>
+                    <!-- Check if the elector has already voted -->
+                    <div th:if="${not hasVoted}">
+                        <form th:action="@{/elections/vote}" method="post" class="d-inline-block">
+                            <input type="hidden" name="candidateId" th:value="${candidate.id}" />
+                            <input type="hidden" name="electorId" th:value="${electorModel.id}" />
+                            <button type="submit" class="btn btn-primary">Vote</button>
+                        </form>
+                    </div>
+                    <div th:if="${hasVoted}">
+                        <p>You have already voted.</p>
+                    </div>
                 </div>
             </li>
         </ul>

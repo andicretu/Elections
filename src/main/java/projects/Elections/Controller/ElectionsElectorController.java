@@ -43,9 +43,11 @@ public class ElectionsElectorController {
         ElectorModel electorModel = electionsRepository.findByEmail(email);
         List<CandidateModel> candidatesList = candidateRepository.findAll();
         List<VoteModel> votes = voteRepository.findByElectorModelEmail(email);
+        boolean hasVoted = (votes != null && !votes.isEmpty());
         model.addAttribute("electorModel", electorModel);
         model.addAttribute("candidatesList", candidatesList);
         model.addAttribute("votes", votes);
+        model.addAttribute("hasVoted", hasVoted);
         return "electionsShowElector";
     }
     @PostMapping("/registerElector")
