@@ -16,12 +16,12 @@ public class VotingService {
     public void castVote(CandidateModel candidate, ElectorModel voter) {
         VoteModel vote = new VoteModel();
         vote.setCandidate(candidate);
-        vote.setVoter(voter);
+        vote.setElectorModel(voter);
         vote.setVotes(1);
         vote.setTimestamp(LocalDateTime.now());
         voteRepository.save(vote);
     }
     public int getTotalVotesForCandidate(CandidateModel candidate, String email) {
-        return voteRepository.findCandidateByVoterEmail(email).size();
+        return voteRepository.findCandidateByElectorModelEmail(email).size();
     }
 }

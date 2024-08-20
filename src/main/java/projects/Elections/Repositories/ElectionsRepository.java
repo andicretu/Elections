@@ -5,8 +5,8 @@ import projects.Elections.Models.ElectorModel;
 
 import java.util.Optional;
 
-public interface ElectionsRepository extends CrudRepository<ElectorModel, String> {
+public interface ElectionsRepository extends CrudRepository<ElectorModel, Long> {
     ElectorModel findByEmail(String email);
     @Override
-    Optional<ElectorModel> findById(String id);
+    Optional<ElectorModel> findById(Long id);
 }

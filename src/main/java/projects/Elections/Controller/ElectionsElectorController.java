@@ -42,7 +42,7 @@ public class ElectionsElectorController {
     public String showElectorProfile(@PathVariable String email, Model model) {
         ElectorModel electorModel = electionsRepository.findByEmail(email);
         List<CandidateModel> candidatesList = candidateRepository.findAll();
-        List<VoteModel> votes = voteRepository.findByVoterEmail(email);
+        List<VoteModel> votes = voteRepository.findByElectorModelEmail(email);
         model.addAttribute("electorModel", electorModel);
         model.addAttribute("candidatesList", candidatesList);
         model.addAttribute("votes", votes);

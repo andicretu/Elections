@@ -16,7 +16,6 @@ public class ElectionsVotingController {
     private VotingService votingService;
     private final CandidateRepository candidateRepository;
     private final ElectionsRepository electionsRepository;
-    private ElectorModel electorModel;
 
     @Autowired
     public ElectionsVotingController(ElectionsRepository electionsRepository, CandidateRepository candidateRepository) {
@@ -24,10 +23,10 @@ public class ElectionsVotingController {
         this.candidateRepository = candidateRepository;
     }
     @PostMapping("/elections/vote")
-    public String castVote(@RequestParam Long candidateId, @RequestParam String voterId) {
+    public String castVote(@RequestParam Long candidateId, @RequestParam Long electorId) {
         CandidateModel candidate = candidateRepository.findById(candidateId).orElseThrow();
-        ElectorModel voter = electionsRepository.findById(voterId).orElseThrow();
-        votingService.castVote(candidate, voter);
+        ElectorModel electorModel = electionsRepository.findById(electorId).orElseThrow();
+        votingService.castVote(candidate, electorModel);
         return "redirect:/elections/show-elector/" + electorModel.getEmail();
     }
 }

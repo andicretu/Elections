@@ -17,8 +17,8 @@ public class VoteModel {
     private CandidateModel candidate;
 
     @ManyToOne
-    @JoinColumn(name = "VOTER_ID")
-    private ElectorModel voter;
+    @JoinColumn(name = "ELECTOR_ID")
+    private ElectorModel electorModel;
 
     @Column(name = "TIMESTAMP")
     private LocalDateTime timestamp;
@@ -27,9 +27,9 @@ public class VoteModel {
     private int votes;
     public VoteModel() {
     }
-    public VoteModel(CandidateModel candidate, ElectorModel voter, LocalDateTime timestamp, int votes) {
+    public VoteModel(CandidateModel candidate, ElectorModel electorModel, LocalDateTime timestamp, int votes) {
         this.candidate = candidate;
-        this.voter = voter;
+        this.electorModel = electorModel;
         this.timestamp = timestamp;
         this.votes = votes;
     }
@@ -46,11 +46,11 @@ public class VoteModel {
     public void setCandidate(CandidateModel candidate) {
         this.candidate = candidate;
     }
-    public ElectorModel getVoter() {
-        return voter;
+    public ElectorModel getElectorModel() {
+        return electorModel;
     }
-    public  void setVoter(ElectorModel voter) {
-        this.voter = voter;
+    public  void setElectorModel(ElectorModel electorModel) {
+        this.electorModel = electorModel;
     }
     public LocalDateTime getTimestamp() {
         return timestamp;

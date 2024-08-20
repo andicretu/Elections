@@ -23,7 +23,9 @@
         <h2>Voting History</h2>
         <ul class="list-group">
             <li th:each="vote : ${votes}" class="list-group-item">
-                <p><strong>Voted for:</strong> <span th:text="${vote.candidate.elector.name}"></span></p>
+                <p><strong>Voted for:</strong>
+                    <span th:text="${vote.candidate.elector.name}"></span></p> -
+                    <span th:text="${vote.candidate.partyAffiliation}"></span>
                 <!-- <p><strong>On:</strong> <span th:text="${#dates.format(vote.timestamp, 'yyyy-MM-dd HH:mm')}"></span></p> -->
             </li>
         </ul>
@@ -47,8 +49,8 @@
                 <div>
                     <form th:action="@{/elections/vote}" method="post" class="d-inline-block">
                         <input type="hidden" name="candidateId" th:value="${candidate.id}" />
-                        <input type="hidden" name="voterId" th:value="${electorModel.id}" />
-                        <button type="submit" class="btn-btn-primary">Vote</button>
+                        <input type="hidden" name="electorId" th:value="${electorModel.id}" />
+                        <button type="submit" class="btn btn-primary">Vote</button>
                     </form>
                 </div>
             </li>
