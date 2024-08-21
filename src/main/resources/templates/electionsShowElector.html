@@ -24,9 +24,12 @@
         <ul class="list-group">
             <li th:each="vote : ${votes}" class="list-group-item">
                 <p><strong>Voted for:</strong>
-                    <span th:text="${vote.candidate.elector.name}"></span></p> -
-                    <span th:text="${vote.candidate.partyAffiliation}"></span>
-                <!-- <p><strong>On:</strong> <span th:text="${#dates.format(vote.timestamp, 'yyyy-MM-dd HH:mm')}"></span></p> -->
+                    <span th:text="${vote.candidate.elector.name}"></span></p>
+                <p><strong>Party:</strong>
+                    <span th:text="${vote.candidate.partyAffiliation}"></span></p>
+                <p><strong>On:</strong>
+                    <span th:if="${vote.timestamp != null}" th:text="${vote.timestamp.format(T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd HH:mm'))}"></span>
+                    <span th:if="${vote.timestamp == null}">No timestamp available</span></p>
             </li>
         </ul>
     </div>
@@ -47,7 +50,6 @@
                     </a>
                 </div>
                 <div>
-                    <!-- Check if the elector has already voted -->
                     <div th:if="${not hasVoted}">
                         <form th:action="@{/elections/vote}" method="post" class="d-inline-block">
                             <input type="hidden" name="candidateId" th:value="${candidate.id}" />
