@@ -25,11 +25,11 @@
             <pre class="card-text" th:text="${candidateModel.electoralPlatform}"></pre>
         </div>
     </div>
-    <form th:action="@{/logout}" method="post" class="mt-4">
-        <button type="submit" class="btn btn-primary">Logout</button>
-    </form>
     <div class="mt-4" th:if="${isOwner}">
         <a th:href="@{/elections/edit-candidate/{email}(email=${candidateModel.elector.email})}" class="btn btn-warning">Edit Candidate</a>
+        <form th:action="@{/logout}" method="post" class="mt-4">
+            <button type="submit" class="btn btn-primary">Logout</button>
+        </form>
     </div>
     <div class="mt-4" th:if="${!isOwner}">
         <h2>Candidates List</h2>
@@ -41,6 +41,9 @@
                 </a>
             </li>
         </ul>
+        <form th:action="@{/welcome}" method="get" class="mt-4">
+            <button type="submit" class="btn btn-primary">Back</button>
+        </form>
     </div>
 </div>
 </body>

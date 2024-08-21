@@ -31,6 +31,7 @@ public class ElectionsVotingController {
         ElectorModel electorModel = electionsRepository.findById(electorId).orElseThrow();
         try {
             CandidateModel candidate = candidateRepository.findById(candidateId).orElseThrow();
+            votingService.castVote(candidate, electorModel);
         } catch (IllegalStateException e) {
             model.addAttribute("errorMessage", "You have already voted.");
             return "redirect:/elections/show-elector/" + electorModel.getEmail();

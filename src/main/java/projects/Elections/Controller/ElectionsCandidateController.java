@@ -61,13 +61,7 @@ public class ElectionsCandidateController {
             electorModel.setPassword(hashedPassword);
             electionsRepository.save(electorModel);
         }
-        System.out.println("ElectorId: "+ electorModel.getId());
-        System.out.println("Resume: " + candidateModel.getResume());
-        System.out.println("Electoral Platform: " + candidateModel.getElectoralPlatform());
-        System.out.println("Elector Email: " + candidateModel.getElector().getEmail());
-        System.out.println("Elector/candidat salvat cu succes");
         candidateRepository.save(candidateModel);
-        System.out.println("Id: " + candidateModel.getId());
         System.out.println("Candidat salvat cu succes");
         model.addAttribute("message", "Candidate profile saved successfully!");
         return "redirect:/elections/show-candidate/" + candidateModel.getElector().getEmail();
