@@ -11,4 +11,6 @@ public interface VoteRepository extends CrudRepository<VoteModel, Long> {
     List<VoteModel> findByElectorModelEmail(String email);
     List<VoteModel> findByElectorModel(ElectorModel electorModel);
     boolean existsByElectorModel(ElectorModel electorModel);
+
+    int countByCandidateId(Long candidateId);
 }

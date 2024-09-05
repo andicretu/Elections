@@ -13,6 +13,7 @@ import projects.Elections.Models.CandidateModel;
 import projects.Elections.Models.ElectorModel;
 import projects.Elections.Repositories.CandidateRepository;
 import projects.Elections.Repositories.ElectionsRepository;
+
 @org.springframework.stereotype.Controller
 public class ElectionsCandidateController {
     @Autowired
