@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Profile details</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-4">Elector details</h1>
+    <div class="card mt-4">
+        <div class="card-body">
+            <p><strong>Email:</strong></p>
+            <pre class="card-text" th:text="${electorModel.email}"></pre>
+            <p><strong>Name:</strong></p>
+            <pre class="card-text" th:text="${electorModel.name}"></pre>
+            <p><strong>Description:</strong></p>
+            <pre class="card-text" th:text="${electorModel.description}"></pre>
+        </div>
+    </div>
+    <div class="mt-4">
+        <h2>Voting History</h2>
+        <ul class="list-group">
+            <li th:each="vote : ${votes}" class="list-group-item">
+                <p><strong>Voted for:</strong>
+                    <span th:text="${vote.candidate.elector.name}"></span></p>
+                <p><strong>Party:</strong>
+                    <span th:text="${vote.candidate.partyAffiliation}"></span></p>
+                <p><strong>On:</strong>
+                    <span th:if="${vote.timestamp != null}" th:text="${vote.timestamp.format(T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd HH:mm'))}"></span>
+                    <span th:if="${vote.timestamp == null}">No timestamp available</span></p>
+            </li>
+        </ul>
+    </div>
+    <form th:action="@{/logout}" method="post" class="mt-4">
+        <button type="submit" class="btn btn-primary">Logout</button>
+    </form>
+    <div class="mt-4">
+        <a th:href="@{/elections/edit-elector/{email}(email=${electorModel.email})}" class="btn btn-warning">Edit Elector</a>
+    </div>
+    <div class="mt-4">
+        <h2>Candidates List</h2>
+        <ul class="list-group">
+            <li th:each="candidate : ${candidatesList}" class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <a th:href="@{/elections/show-candidate/{email}(email=${candidate.elector.email})}">
+                        <span th:text="${candidate.elector.name}"></span> -
+                        <span th:text="${candidate.partyAffiliation}"></span>
+                    </a>
+                </div>
+                <div>
+                    <div th:if="${not hasVoted}">
+                        <form th:action="@{/elections/vote}" method="post" class="d-inline-block">
+                            <input type="hidden" name="candidateId" th:value="${candidate.id}" />
+                            <input type="hidden" name="electorId" th:value="${electorModel.id}" />
+                            <button type="submit" class="btn btn-primary">Vote</button>
+                        </form>
+                    </div>
+                    <div th:if="${hasVoted}">
+                        <p>You have already voted.</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

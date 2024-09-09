@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="projects.Elections.ElectionsApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-07-25T06:58:26" hostname="Andis-MBP.home" time="0.886">
+  <properties/>
+  <testcase name="contextLoads()" classname="projects.Elections.ElectionsApplicationTests" time="0.886"/>
+  <system-out><![CDATA[08:58:19.253 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [projects.Elections.ElectionsApplicationTests]: ElectionsApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:58:19.466 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration projects.Elections.ElectionsApplication for test class projects.Elections.ElectionsApplicationTests
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.0)
+
+2024-07-25T08:58:20.218+02:00  INFO 59229 --- [Elections] [    Test worker] p.Elections.ElectionsApplicationTests    : Starting ElectionsApplicationTests using Java 21.0.1 with PID 59229 (started by andicretu in /Users/andicretu/IdeaProjects/Elections)
+2024-07-25T08:58:20.222+02:00  INFO 59229 --- [Elections] [    Test worker] p.Elections.ElectionsApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2024-07-25T08:58:21.546+02:00  INFO 59229 --- [Elections] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-25T08:58:21.649+02:00  INFO 59229 --- [Elections] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 95 ms. Found 2 JPA repository interfaces.
+2024-07-25T08:58:22.508+02:00  INFO 59229 --- [Elections] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-25T08:58:22.587+02:00  INFO 59229 --- [Elections] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-25T08:58:22.636+02:00  INFO 59229 --- [Elections] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-25T08:58:23.134+02:00  INFO 59229 --- [Elections] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-25T08:58:23.173+02:00  INFO 59229 --- [Elections] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-25T08:58:23.352+02:00  INFO 59229 --- [Elections] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7657d90b
+2024-07-25T08:58:23.354+02:00  INFO 59229 --- [Elections] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-25T08:58:23.397+02:00  WARN 59229 --- [Elections] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-25T08:58:24.804+02:00  INFO 59229 --- [Elections] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-25T08:58:24.898+02:00  INFO 59229 --- [Elections] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-25T08:58:25.483+02:00  WARN 59229 --- [Elections] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-25T08:58:25.520+02:00  INFO 59229 --- [Elections] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2024-07-25T08:58:26.032+02:00  INFO 59229 --- [Elections] [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@623a891d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7962a364, org.springframework.security.web.context.SecurityContextHolderFilter@1c149539, org.springframework.security.web.header.HeaderWriterFilter@5b01b3f8, org.springframework.web.filter.CorsFilter@756030e2, org.springframework.security.web.csrf.CsrfFilter@cef23a8, org.springframework.security.web.authentication.logout.LogoutFilter@24bc06dd, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6fb51e17, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@49616310, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6662974a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@134ec0f3, org.springframework.security.web.access.ExceptionTranslationFilter@16eb01d4, org.springframework.security.web.access.intercept.AuthorizationFilter@5de14222]
+2024-07-25T08:58:26.652+02:00  INFO 59229 --- [Elections] [    Test worker] p.Elections.ElectionsApplicationTests    : Started ElectionsApplicationTests in 6.92 seconds (process running for 9.059)
+Skipping record deletion on startup
+]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/andicretu/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.16/4a451ee6484abac3a498df0f3b33ed00a6fced4d/byte-buddy-agent-1.14.16.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

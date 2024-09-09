@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="450c30d5-72ad-43b7-ae84-8c335b6f0208" name="Changes" comment="Voting - works&#10;Time display - works&#10;Back button on candidates !isOwner - works&#10;Logout button on candidates !isOwner - hidden&#10;Next: implement voting sessions.">
+      <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gs-rest-service" beforeDir="false" afterPath="$PROJECT_DIR$/../gs-rest-service" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Elections" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="3dc957e2527ff9488235c9d2fdec74613230f222" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2hBQLcB5UadkrCwCCTLo5VvqtRi" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Gradle.Elections [:ElectionsApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Elections [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Elections [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Elections.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/andicretu/IdeaProjects/Elections&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.web.browsers&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/projects/Elections/Controller" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static/Images/Images" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="projects.Elections" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="projects.Elections" />
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle clean" />
+      <command value="gradle build" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.ElectionsApplication">
+    <configuration name="ElectionsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="projects.Elections.ElectionsApplication" />
+      <module name="Elections.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="projects.Elections.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Elections [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Elections [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.ElectionsApplication" />
+      <item itemvalue="Gradle.Elections [build]" />
+      <item itemvalue="Gradle.Elections [clean]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.Elections [clean]" />
+        <item itemvalue="Gradle.Elections [build]" />
+        <item itemvalue="Application.ElectionsApplication" />
+        <item itemvalue="Gradle.Elections [clean]" />
+        <item itemvalue="Gradle.Elections [build]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-9b16c6e2" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="450c30d5-72ad-43b7-ae84-8c335b6f0208" name="Changes" comment="" />
+      <created>1717064939661</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1717064939661</updated>
+    </task>
+    <task id="LOCAL-00001" summary="With candidate profile.">
+      <option name="closed" value="true" />
+      <created>1720352003424</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1720352003424</updated>
+    </task>
+    <task id="LOCAL-00002" summary="broken">
+      <option name="closed" value="true" />
+      <created>1721992259903</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1721992259903</updated>
+    </task>
+    <task id="LOCAL-00003" summary="With frontend checkbox">
+      <option name="closed" value="true" />
+      <created>1722349476259</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1722349476260</updated>
+    </task>
+    <task id="LOCAL-00004" summary="With register elector and register candidate">
+      <option name="closed" value="true" />
+      <created>1723118269866</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723118269866</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Without database deletion.">
+      <option name="closed" value="true" />
+      <created>1723195393245</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1723195393245</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Does not save the candidate fields!">
+      <option name="closed" value="true" />
+      <created>1723206031217</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1723206031217</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Saves candidates, retrieves them from list, but does not log in.">
+      <option name="closed" value="true" />
+      <created>1723469040340</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1723469040341</updated>
+    </task>
+    <task id="LOCAL-00008" summary="All features working, next built: voting system.">
+      <option name="closed" value="true" />
+      <created>1723554997686</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1723554997686</updated>
+    </task>
+    <task id="LOCAL-00009" summary="With edit working only for elector and Error for candidate.">
+      <option name="closed" value="true" />
+      <created>1723643809448</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1723643809448</updated>
+    </task>
+    <task id="LOCAL-00010" summary="With edit working for both elector and candidate. Next to prevent it from working without login.">
+      <option name="closed" value="true" />
+      <created>1723800991295</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1723800991295</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Firs voting version: does not work(references candidates&quot; via JDBC [ERROR: there is no primary key for referenced table &quot;candidates&quot;])">
+      <option name="closed" value="true" />
+      <created>1723813944745</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1723813944745</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Voting - works.&#10;Next: &#10;-make it unique&#10;-return elector's page&#10;-show votes">
+      <option name="closed" value="true" />
+      <created>1724073758993</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1724073758993</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Voting - works, and returns elector's page.&#10;Next: &#10;-make it unique&#10;-show votes">
+      <option name="closed" value="true" />
+      <created>1724146168299</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1724146168299</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Voting - works, is unique,and returns elector's page.&#10;Next: &#10;-show votes">
+      <option name="closed" value="true" />
+      <created>1724149367391</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1724149367391</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Voting - doesn't work. Shows the date for old electors, but doesn't show votes for newly registered electors. Also, allows multiple voting. &#10;Next: &#10;-debug.">
+      <option name="closed" value="true" />
+      <created>1724243247540</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1724243247540</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Voting - works&#10;Time display - works&#10;Back button on candidates !isOwner - works&#10;Logout button on candidates !isOwner - hidden&#10;Next: implement voting sessions.">
+      <option name="closed" value="true" />
+      <created>1724244934988</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1724244934988</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Voting - works&#10;Time display - works&#10;Back button on candidates !isOwner - works&#10;Logout button on candidates !isOwner - hidden&#10;Votes counting: works&#10;New showResults page accesible from Welcome: works&#10;Next: &#10;- implement voting sessions;&#10;- implement admin role.">
+      <option name="closed" value="true" />
+      <created>1725540306523</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1725540306524</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Voting - works&#10;Time display - works&#10;Back button on candidates !isOwner - works&#10;Logout button on candidates !isOwner - hidden&#10;Votes counting: works&#10;New showResults page accesible from Welcome: works&#10;Next: &#10;- implement voting sessions;&#10;- implement admin role.">
+      <option name="closed" value="true" />
+      <created>1725540395033</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1725540395033</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="With candidate profile." />
+    <MESSAGE value="broken" />
+    <MESSAGE value="With frontend checkbox" />
+    <MESSAGE value="With register elector and register candidate" />
+    <MESSAGE value="Without database deletion." />
+    <MESSAGE value="Does not save the candidate fields!" />
+    <MESSAGE value="Saves candidates, retrieves them from list, but does not log in." />
+    <MESSAGE value="All features working, next built: voting system." />
+    <MESSAGE value="With edit working only for elector and Error for candidate." />
+    <MESSAGE value="With edit working for both elector and candidate. Next to prevent it from working without login." />
+    <MESSAGE value="Firs voting version: does not work(references candidates&quot; via JDBC [ERROR: there is no primary key for referenced table &quot;candidates&quot;])" />
+    <MESSAGE value="Voting - works.&#10;Next: &#10;-make it unique&#10;-return elector's page&#10;-show votes" />
+    <MESSAGE value="Voting - works, and returns elector's page.&#10;Next: &#10;-make it unique&#10;-show votes" />
+    <MESSAGE value="Voting - works, is unique,and returns elector's page.&#10;Next: &#10;-show votes" />
+    <MESSAGE value="Voting - doesn't work. Shows the date for old electors, but doesn't show votes for newly registered electors. Also, allows multiple voting. &#10;Next: &#10;-debug." />
+    <MESSAGE value="Voting - works&#10;Time display - works&#10;Back button on candidates !isOwner - works&#10;Logout button on candidates !isOwner - hidden&#10;Next: implement voting sessions." />
+    <MESSAGE value="Voting - works&#10;Time display - works&#10;Back button on candidates !isOwner - works&#10;Logout button on candidates !isOwner - hidden&#10;Votes counting: works&#10;New showResults page accesible from Welcome: works&#10;Next: &#10;- implement voting sessions;&#10;- implement admin role." />
+    <option name="LAST_COMMIT_MESSAGE" value="Voting - works&#10;Time display - works&#10;Back button on candidates !isOwner - works&#10;Logout button on candidates !isOwner - hidden&#10;Votes counting: works&#10;New showResults page accesible from Welcome: works&#10;Next: &#10;- implement voting sessions;&#10;- implement admin role." />
+  </component>
+</project>
