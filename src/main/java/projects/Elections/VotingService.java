@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projects.Elections.Models.CandidateModel;
 import projects.Elections.Models.ElectorModel;
+import projects.Elections.Models.SessionModel;
 import projects.Elections.Models.VoteModel;
+import projects.Elections.Repositories.SessionsRepository;
 import projects.Elections.Repositories.VoteRepository;
 
 import java.time.LocalDateTime;
@@ -13,7 +15,9 @@ import java.time.LocalDateTime;
 public class VotingService {
     @Autowired
     private VoteRepository voteRepository;
-    public void castVote(CandidateModel candidate, ElectorModel electorModel) {
+    @Autowired
+    SessionsRepository sessionsRepository;
+    public void castVote(CandidateModel candidate, ElectorModel electorModel, SessionModel sessionModel) {
         boolean hasVoted = voteRepository.existsByElectorModel(electorModel);
         if (hasVoted) {
             throw new IllegalStateException("This elector has already voted.");
@@ -21,7 +25,7 @@ public class VotingService {
         VoteModel vote = new VoteModel();
         vote.setCandidate(candidate);
         vote.setElectorModel(electorModel);
-        vote.setVotes(1);
+        vote.setSessionModel(sessionModel);
         vote.setTimestamp(LocalDateTime.now());
         voteRepository.save(vote);
     }

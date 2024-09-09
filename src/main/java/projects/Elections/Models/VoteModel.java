@@ -22,16 +22,16 @@ public class VoteModel {
 
     @Column(name = "TIMESTAMP")
     private LocalDateTime timestamp;
-
-    @Column(name = "VOTES")
-    private int votes;
+    @ManyToOne
+    @JoinColumn(name = "SESSION_ID")
+    private SessionModel sessionModel;
     public VoteModel() {
     }
-    public VoteModel(CandidateModel candidate, ElectorModel electorModel, LocalDateTime timestamp, int votes) {
+    public VoteModel(CandidateModel candidate, ElectorModel electorModel, LocalDateTime timestamp, SessionModel sessionModel) {
         this.candidate = candidate;
         this.electorModel = electorModel;
         this.timestamp = timestamp;
-        this.votes = votes;
+        this.sessionModel = sessionModel;
     }
 
     public Long getId() {
@@ -58,10 +58,10 @@ public class VoteModel {
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
-    public int getVotes() {
-        return votes;
+    public SessionModel getSessionModel() {
+        return sessionModel;
     }
-    public void setVotes(int votes) {
-        this.votes = votes;
+    public void setSessionModel(SessionModel sessionModel) {
+        this.sessionModel = sessionModel;
     }
 }

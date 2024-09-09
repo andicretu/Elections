@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 @Controller
-public class ElectionsShowResultsController {
+public class ElectionsResultsController {
     @Autowired
     private CandidateRepository candidateRepository;
     @Autowired
